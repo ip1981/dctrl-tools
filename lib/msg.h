@@ -110,21 +110,23 @@ message (int severity, const char * fname, const char * fmt, ...)
 #undef PROGNAME_MAXLEN
 #endif
 
+#ifdef INCLUDE_DEBUG_MSGS
 inline static void
 debug_message (const char * s, const char * fname)
 {
-#ifdef INCLUDE_DEBUG_MSGS
   message (L_DEBUG, fname, "%s", s);
-#endif
 }
+#else
+#define debug_message(x, y) /* nothing */
+#endif
 
+
+#ifdef INCLUDE_DEBUG_MSGS
 static void
 debug(const char * s, ...) __attribute__((format(printf, 1, 2)));
-
 inline static void
 debug(const char * s, ...) 
 {
-#ifdef INCLUDE_DEBUG_MSGS
 	if (do_msg(L_DEBUG)) {
 		va_list va;
 		va_start(va, s);
@@ -133,8 +135,10 @@ debug(const char * s, ...)
 		fprintf(stderr, "\n");
 		va_end(va);
 	}
-#endif
 }
+#else
+#define debug(s, ...) /* nothing */
+#endif
 
 inline static void
 errno_msg(int severity, char const * fname)
