@@ -3,6 +3,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([foreign subdir-objects dist-bzip2])
+m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES])
 
 AC_PROG_CC_C99
 AC_USE_SYSTEM_EXTENSIONS
@@ -15,7 +16,9 @@ AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18.1])
 
 AC_ARG_ENABLE([werror],
-    AS_HELP_STRING([--enable-werror], [treat warnings as errors]))
+    AS_HELP_STRING([--enable-werror], [treat warnings as errors]),
+    [],
+    [enable_werror=no])
 
 AS_IF([test "x$enable_werror" != "xno"], [
   AC_SUBST([WERROR], [-Werror])
