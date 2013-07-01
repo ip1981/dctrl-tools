@@ -24,6 +24,7 @@ install-exec-hook:
 		for a in $(GREP_ALIASES); do \
 		rm -f $$a; $(LN_S) grep-dctrl $$a; \
 		done
+install-data-hook:
 	cd $(DESTDIR)$(mandir)/man1 && \
 		for a in $(GREP_ALIASES); do \
 		rm -f $$a.1; $(LN_S) grep-dctrl.1 $$a.1; \
