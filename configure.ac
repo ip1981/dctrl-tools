@@ -36,6 +36,7 @@ AC_CONFIG_FILES([
     gnulib/lib/Makefile
     gnulib/po/Makefile.in
     sync-available/sync-available
+    man/grep-dctrl.1
 ])
 
 AC_OUTPUT

@@ -4,6 +4,15 @@ ACLOCAL_AMFLAGS = -I m4 -I gnulib/m4
 
 noinst_LTLIBRARIES = lib/libdctrl.la
 
+man1_MANS = \
+man/grep-dctrl.1 \
+man/join-dctrl.1 \
+man/sort-dctrl.1 \
+man/tbl-dctrl.1
+
+man8_MANS = \
+man/sync-available.8
+
 bin_PROGRAMS = \
 			   grep-dctrl/grep-dctrl \
 			   sort-dctrl/sort-dctrl \
