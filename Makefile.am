@@ -2,7 +2,7 @@ SUBDIRS = po .
 
 ACLOCAL_AMFLAGS = -I m4
 
-lib_LTLIBRARIES = lib/libdctrl.la
+noinst_LTLIBRARIES = lib/libdctrl.la
 
 bin_PROGRAMS = \
 			   grep-dctrl/grep-dctrl \
