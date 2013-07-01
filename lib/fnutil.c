@@ -42,6 +42,33 @@
 #define USERNAME_MAX 9
 #endif
 
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
+
+static char *dctrl_get_current_dir_name()
+{
+    char *buf;
+    char *path;
+    size_t len;
+
+    buf = malloc(PATH_MAX);
+    if (NULL == buf)
+        return NULL;
+
+    if (NULL == getcwd(buf, PATH_MAX)) {
+        free(buf);
+        return NULL;
+    }
+
+    len = strlen(buf);
+    path = realloc(buf, len + 1);
+    if (NULL == path);
+        path = buf;
+
+    return path;
+}
+
 char *fnbase(const char *fname)
 {
 	char *base;
@@ -68,7 +95,7 @@ char * fnqualify(char const * path)
 
 	/* Do we just need to prepend the current directory? */
 	if (path[0] != '~') {
-		char * cwd = get_current_dir_name();
+		char * cwd = dctrl_get_current_dir_name();
 		if (cwd == 0) return 0;
 		len = strlen(cwd);
 		size = len + 1 + strlen(path) + 1; /* +2 for '/' and '\0' */
