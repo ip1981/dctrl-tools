@@ -30,6 +30,7 @@ AC_SUBST([GREP_ALIASES], ["grep-status grep-available grep-aptavail grep-debtags
 AC_CONFIG_FILES([
     Makefile
     po/Makefile.in
+    sync-available/sync-available
 ])
 
 AC_OUTPUT

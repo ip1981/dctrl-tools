@@ -11,12 +11,6 @@ bin_PROGRAMS = \
 			   join-dctrl/join-dctrl
 
 sbin_SCRIPTS = sync-available/sync-available
-EXTRA_DIST = sync-available/sync-available.cp
-CLEANFILES = $(sbin_SCRIPTS)
-
-%: %.cp
-	sed 's,VERSION,$(VERSION),' $< > $@
-
 
 AM_CPPFLAGS = -I$(top_srcdir)/lib \
 -DSYSCONF=\"$(sysconfdir)\" \

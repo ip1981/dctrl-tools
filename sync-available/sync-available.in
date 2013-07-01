@@ -24,7 +24,7 @@ if [ $# -ge 1 ]
 then
     if [ "x$@" = "x--version" ]
     then
-	echo "update-avail (dctrl-tools) VERSION"
+	echo "update-avail (dctrl-tools) @VERSION@"
     else
 	echo "Usage:"
 	echo "  $0"
