@@ -19,6 +19,21 @@ bin_PROGRAMS = \
 			   tbl-dctrl/tbl-dctrl \
 			   join-dctrl/join-dctrl
 
+install-exec-hook:
+	cd $(DESTDIR)$(bindir) && \
+		for a in $(GREP_ALIASES); do \
+		rm -f $$a; $(LN_S) grep-dctrl $$a; \
+		done
+	cd $(DESTDIR)$(mandir)/man1 && \
+		for a in $(GREP_ALIASES); do \
+		rm -f $$a.1; $(LN_S) grep-dctrl.1 $$a.1; \
+		done
+uninstall-local:
+	for a in $(GREP_ALIASES); do \
+	rm -f $(DESTDIR)$(bindir)/$$a; \
+	rm -f $(DESTDIR)$(mandir)/man1/$$a.1; \
+	done
+
 sbin_SCRIPTS = sync-available/sync-available
 
 AM_CPPFLAGS = \
