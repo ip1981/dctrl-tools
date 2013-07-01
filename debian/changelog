@@ -1,8 +1,9 @@
-dctrl-tools (2.24) UNRELEASED; urgency=low
+dctrl-tools (2.24+dyson1) unstable; urgency=low
 
-  * 
+  * Package for Dyson:
+    - Use autotools & gnulib
 
- -- Antti-Juhani Kaijanaho <ajk@debian.org>  Tue, 07 May 2013 23:22:19 +0300
+ -- Igor Pashev <pashev.igor@gmail.com>  Mon, 01 Jul 2013 21:24:13 +0400
 
 dctrl-tools (2.23) unstable; urgency=low
 
