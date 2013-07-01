@@ -6,8 +6,10 @@ AM_INIT_AUTOMAKE([foreign subdir-objects dist-bzip2])
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES])
 
 AC_PROG_CC_C99
+gl_EARLY
 AC_USE_SYSTEM_EXTENSIONS
 LT_INIT
+gl_INIT
 
 AC_CHECK_PROG([PO4A],[po4a],[po4a],[no])
 AM_CONDITIONAL([HAVE_PO4A], [test "x$PO4A" != "xno"])
@@ -27,9 +29,12 @@ AS_IF([test "x$enable_werror" != "xno"], [
 
 AC_SUBST([GREP_ALIASES], ["grep-status grep-available grep-aptavail grep-debtags"])
 
+AC_CONFIG_HEADER([config.h])
 AC_CONFIG_FILES([
     Makefile
     po/Makefile.in
+    gnulib/lib/Makefile
+    gnulib/po/Makefile.in
     sync-available/sync-available
 ])
 
